@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hyra Tryggt – Trygg andrahandsuthyrning</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Hyra Tryggt</a>
+      <nav class="main-nav">
+        <a href="listings.html">Lediga bostäder</a>
+        <a href="login.html" class="btn btn-ghost btn-small">Logga in</a>
+        <a href="login.html#signup" class="btn btn-primary btn-small">Registrera</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Search -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-content">
+      <h1>Hitta tryggt boende i andra hand</h1>
+      <p>Sök bland verifierade hyresobjekt i hela Sverige.</p>
+      <form action="listings.html" method="get" class="search-form" onsubmit="return heroSearchSubmit(event)">
+        <input type="text" name="q" placeholder="Stad, område eller adress" aria-label="Sök bostad" />
+        <button type="submit" class="btn btn-primary">Sök</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Featured Listings -->
+  <section class="section">
+    <div class="container">
+      <h2>Utvalda bostäder</h2>
+      <div id="featured-listings" class="card-grid"></div>
+      <div class="center mt-2">
+        <a href="listings.html" class="btn btn-secondary">Visa alla</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Register Your Bostad Scroll Section -->
+  <section id="register-bostad" class="section alt-bg">
+    <div class="container narrow">
+      <h2>Registrera din bostad</h2>
+      <p>Vill du hyra ut tryggt? Fyll i dina uppgifter så hör vi av oss.</p>
+      <form id="quick-register-form" onsubmit="return quickRegisterBostad(event)">
+        <label>För- och efternamn<input required type="text" name="name" /></label>
+        <label>E‑post<input required type="email" name="email" /></label>
+        <label>Ort<input required type="text" name="city" /></label>
+        <label>Hyra per månad (SEK)<input type="number" name="rent" min="0" /></label>
+        <button type="submit" class="btn btn-primary">Skicka intresse</button>
+      </form>
+      <p class="small mt-2">Vill du fylla i alla detaljer direkt? <a href="create-listing.html">Gå till fullständig annons</a>.</p>
+      <p id="quick-register-status" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-block">
+        <strong>Hyra Tryggt</strong><br />Trygg andrahandsuthyrning.
+      </div>
+      <nav class="footer-nav">
+        <a href="#">Om oss</a>
+        <a href="#register-bostad">Hyr ut</a>
+        <a href="#">Kontakt</a>
+        <a href="#">Integritet</a>
+      </nav>
+    </div>
+    <div class="container footer-legal">
+      <p>Kontakt: <a href="mailto:support@hyratryggt.se">support@hyratryggt.se</a></p>
+      <p>© <span id="ft-year"></span> Hyra Tryggt. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>loadFeaturedListings();setFooterYear();</script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lediga bostäder – Hyra Tryggt</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Hyra Tryggt</a>
+      <nav class="main-nav">
+        <a href="listings.html" aria-current="page">Lediga bostäder</a>
+        <a href="login.html" class="btn btn-ghost btn-small">Logga in</a>
+        <a href="login.html#signup" class="btn btn-primary btn-small">Registrera</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container layout-grid">
+    <!-- Filters -->
+    <aside class="filters">
+      <h2>Filtrera</h2>
+      <form id="filters-form" oninput="applyFilters()">
+        <label>
+          Min hyra (SEK)
+          <input type="number" name="minRent" min="0" />
+        </label>
+        <label>
+          Max hyra (SEK)
+          <input type="number" name="maxRent" min="0" />
+        </label>
+        <label>
+          Min storlek (m²)
+          <input type="number" name="minSize" min="0" />
+        </label>
+        <label>
+          Max storlek (m²)
+          <input type="number" name="maxSize" min="0" />
+        </label>
+        <label>
+          Ort / område
+          <input type="text" name="area" />
+        </label>
+        <button type="reset" class="btn btn-ghost" onclick="resetFilters(event)">Rensa</button>
+      </form>
+    </aside>
+
+    <!-- Listings -->
+    <section class="listings">
+      <h1>Lediga bostäder</h1>
+      <div id="listings-grid" class="card-grid"></div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-block">
+        <strong>Hyra Tryggt</strong><br />Trygg andrahandsuthyrning.
+      </div>
+      <nav class="footer-nav">
+        <a href="#">Om oss</a>
+        <a href="index.html#register-bostad">Hyr ut</a>
+        <a href="#">Kontakt</a>
+        <a href="#">Integritet</a>
+      </nav>
+    </div>
+    <div class="container footer-legal">
+      <p>Kontakt: <a href="mailto:support@hyratryggt.se">support@hyratryggt.se</a></p>
+      <p>© <span id="ft-year"></span> Hyra Tryggt. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>loadAllListings();setFooterYear();</script>
+</body>
+</html>

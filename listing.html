@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bostadsannons – Hyra Tryggt</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">Hyra Tryggt</a>
+      <nav class="main-nav">
+        <a href="listings.html">Lediga bostäder</a>
+        <a href="login.html" class="btn btn-ghost btn-small">Logga in</a>
+        <a href="login.html#signup" class="btn btn-primary btn-small">Registrera</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container listing-detail">
+    <div class="listing-gallery" id="listing-gallery"></div>
+    <div class="listing-info">
+      <h1 id="listing-title">Laddar...</h1>
+      <p id="listing-location"></p>
+      <p><strong id="listing-rent"></strong> / månad</p>
+      <p><span id="listing-size"></span> m²</p>
+      <p id="listing-desc"></p>
+      <button class="btn btn-primary" onclick="contactLandlord()">Kontakta uthyrare</button>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand-block">
+        <strong>Hyra Tryggt</strong><br />Trygg andrahandsuthyrning.
+      </div>
+      <nav class="footer-nav">
+        <a href="#">Om oss</a>
+        <a href="index.html#register-bostad">Hyr ut</a>
+        <a href="#">Kontakt</a>
+        <a href="#">Integritet</a>
+      </nav>
+    </div>
+    <div class="container footer-legal">
+      <p>Kontakt: <a href="mailto:support@hyratryggt.se">support@hyratryggt.se</a></p>
+      <p>© <span id="ft-year"></span> Hyra Tryggt. Alla rättigheter förbehållna.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>loadListingFromQuery();setFooterYear();</script>
+</body>
+</html>
