@@ -103,3 +103,71 @@ a{text-decoration:none;color:var(--primary);}a:hover{text-decoration:underline;}
 .footer-nav{display:flex;gap:var(--space-2);flex-wrap:wrap;} 
 .footer-legal{text-align:left;padding-top:var(--space-2);font-size:0.8rem;color:#6f6a63;} 
 @media (min-width:600px){.footer-inner{flex-direction:row;justify-content:space-between;align-items:center;} .footer-legal{text-align:right;}}
+
+/* Logo styles - Add this to your styles.css */
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--primary);
+  text-decoration: none;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo svg {
+  flex-shrink: 0;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.logo-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.logo-tagline {
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: #6f6a63;
+  margin-top: 0.1rem;
+  max-width: 200px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .logo-tagline {
+    display: none;
+  }
+  
+  .logo {
+    gap: 0.5rem;
+  }
+  
+  .logo-name {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-inner {
+    flex-direction: column;
+    gap: 1rem;
+    height: auto;
+    padding: 1rem 0;
+  }
+  
+  .main-nav {
+    justify-content: center;
+  }
+}
