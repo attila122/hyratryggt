@@ -41,10 +41,7 @@
         <path d="M18 13 L19.5 14.5 L22 12" 
               fill="none" stroke="#8c7b5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
       </svg>
-      <div class="logo-text">
-        <span class="logo-name">Hyra Tryggt</span>
-        <span class="logo-tagline">Hyr lägenhet, brf, hus eller rum tryggt med oss som mellanhand</span>
-      </div>
+      <span class="logo-name">Hyra Tryggt</span>
     </a>
     <nav class="main-nav">
       <a href="listings.html">Lediga bostäder</a>
@@ -55,17 +52,17 @@
 </header>
 
   <!-- Hero Search -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container hero-content">
-      <h1>Hitta tryggt boende i andra hand</h1>
-      <p>Sök bland verifierade hyresobjekt i hela Sverige.</p>
-      <form action="listings.html" method="get" class="search-form" onsubmit="return heroSearchSubmit(event)">
-        <input type="text" name="q" placeholder="Stad, område eller adress" aria-label="Sök bostad" />
-        <button type="submit" class="btn btn-primary">Sök</button>
-      </form>
-    </div>
-  </section>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-content">
+    <h1>Hyr ut din bostad tryggt hos oss</h1>
+    <p class="hero-subtitle">Sök bland verifierade hyresobjekt i hela Sverige.</p>
+    <form action="listings.html" method="get" class="search-form" onsubmit="return heroSearchSubmit(event)">
+      <input type="text" name="q" placeholder="Stad, område eller adress" aria-label="Sök bostad" />
+      <button type="submit" class="btn btn-primary">Sök</button>
+    </form>
+  </div>
+</section>
 
   <!-- All Listings -->
 <section class="section">
@@ -92,24 +89,126 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand-block">
-        <strong>Hyra Tryggt</strong><br />Trygg andrahandsuthyrning.
+  <!-- Enhanced Footer -->
+<footer class="site-footer">
+  <!-- Main Footer Content -->
+  <div class="footer-main">
+    <div class="container footer-content">
+      <!-- Brand Section -->
+      <div class="footer-section footer-brand">
+        <div class="footer-logo">
+          <svg width="28" height="28" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="20" cy="20" r="18" fill="#8c7b5e" opacity="0.1" stroke="#8c7b5e" stroke-width="1"/>
+            <path d="M8 22 L20 12 L32 22 L32 30 L24 30 L24 24 L16 24 L16 30 L8 30 Z" 
+                  fill="#8c7b5e" stroke="#8c7b5e" stroke-width="0.5"/>
+            <path d="M6 22 L20 10 L34 22 L32 24 L20 14 L8 24 Z" 
+                  fill="#7a6c52"/>
+            <rect x="18" y="25" width="4" height="5" fill="#f5f3ef" stroke="#8c7b5e" stroke-width="0.5"/>
+            <rect x="10" y="18" width="3" height="3" fill="#f5f3ef" stroke="#8c7b5e" stroke-width="0.5"/>
+            <rect x="27" y="18" width="3" height="3" fill="#f5f3ef" stroke="#8c7b5e" stroke-width="0.5"/>
+            <circle cx="21" cy="27.5" r="0.5" fill="#8c7b5e"/>
+            <path d="M20 8 L24 10 L24 16 L20 18 L16 16 L16 10 Z" 
+                  fill="none" stroke="#8c7b5e" stroke-width="1.5" opacity="0.7"/>
+            <path d="M18 13 L19.5 14.5 L22 12" 
+                  fill="none" stroke="#8c7b5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <strong>Hyra Tryggt</strong>
+        </div>
+        <p>Sveriges tryggaste plattform för andrahandsuthyrning. Vi verifierar alla annonser och agerar mellanhand för en säker uthyrningsprocess.</p>
       </div>
-      <nav class="footer-nav">
-        <a href="#">Om oss</a>
-        <a href="#register-bostad">Hyr ut</a>
-        <a href="#">Kontakt</a>
-        <a href="#">Integritet</a>
-      </nav>
+
+      <!-- Why Choose Us -->
+      <div class="footer-section">
+        <h3>Varför välja oss?</h3>
+        <ul class="footer-features">
+          <li><span class="feature-icon">✓</span> Verifierade annonser</li>
+          <li><span class="feature-icon">✓</span> Säker betalning</li>
+          <li><span class="feature-icon">✓</span> Juridisk support</li>
+          <li><span class="feature-icon">✓</span> 24/7 kundservice</li>
+          <li><span class="feature-icon">✓</span> Försäkringsskydd</li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div class="footer-section">
+        <h3>Våra tjänster</h3>
+        <nav class="footer-nav">
+          <a href="listings.html">Sök bostad</a>
+          <a href="create-listing.html">Hyr ut</a>
+          <a href="#">Kontraktshjälp</a>
+          <a href="#">Besiktning</a>
+          <a href="#">Försäkring</a>
+          <a href="#">Depositionshantering</a>
+        </nav>
+      </div>
+
+      <!-- Support -->
+      <div class="footer-section">
+        <h3>Support & Info</h3>
+        <nav class="footer-nav">
+          <a href="#">Vanliga frågor</a>
+          <a href="#">Så fungerar det</a>
+          <a href="#">Säkerhet</a>
+          <a href="#">Villkor</a>
+          <a href="#">Integritetspolicy</a>
+          <a href="#">Kontakta oss</a>
+        </nav>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h3>Kontakt</h3>
+        <div class="contact-info">
+          <p><strong>E-post:</strong><br><a href="mailto:support@hyratryggt.se">support@hyratryggt.se</a></p>
+          <p><strong>Telefon:</strong><br><a href="tel:+46123456789">08-123 456 789</a></p>
+          <p><strong>Kontorstid:</strong><br>Mån-Fre 9-17<br>Helger stängt</p>
+        </div>
+      </div>
     </div>
+  </div>
+
+  <!-- Security & Trust Badges -->
+  <div class="footer-badges">
+    <div class="container">
+      <div class="trust-badges">
+        <div class="badge">
+          <span class="badge-icon">🛡️</span>
+          <span>SSL-krypterat</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">✅</span>
+          <span>GDPR-kompatibelt</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">🏆</span>
+          <span>Medlemmar i HUR</span>
+        </div>
+        <div class="badge">
+          <span class="badge-icon">📞</span>
+          <span>24/7 Support</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom Footer -->
+  <div class="footer-bottom">
     <div class="container footer-legal">
-      <p>Kontakt: <a href="mailto:support@hyratryggt.se">support@hyratryggt.se</a></p>
-      <p>© <span id="ft-year"></span> Hyra Tryggt. Alla rättigheter förbehållna.</p>
+      <div class="footer-legal-left">
+        <p>© <span id="ft-year"></span> Hyra Tryggt AB. Alla rättigheter förbehållna.</p>
+        <p>Org.nr: 559123-4567 | F-skatt: Ja</p>
+      </div>
+      <div class="footer-legal-right">
+        <p>Följ oss:</p>
+        <div class="social-links">
+          <a href="#" aria-label="Facebook">📘</a>
+          <a href="#" aria-label="Instagram">📷</a>
+          <a href="#" aria-label="LinkedIn">💼</a>
+        </div>
+      </div>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <script src="script.js"></script>
   <script>loadFeaturedListings();setFooterYear();</script>
