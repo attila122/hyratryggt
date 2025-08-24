@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyra Tryggt – Trygg andrahandsuthyrning</title>
+  <meta name="description" content="Sveriges tryggaste plattform för andrahandsuthyrning. Hitta eller hyr ut bostäder med säkerhet i fokus.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#8c7b5e',
+              dark: '#7a6c52',
+              light: '#f5f3ef'
+            },
+            secondary: {
+              DEFAULT: '#4a5568',
+              dark: '#2d3748'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+    
+    .hero-bg {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('images/hero-bg.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+    
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+    
+    .transition-all {
+      transition: all 0.3s ease;
+    }
+    
+    .fade-out {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800">
+  <!-- Header -->
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+      <a href="index.html" class="flex items-center space-x-2">
+        <img src="images/logo.svg" alt="Hyra Tryggt logo" class="w-8 h-8">
+        <span class="text-xl font-bold text-primary-dark">Hyra Tryggt</span>
+      </a>
+      <nav class="hidden md:flex items-center space-x-6">
+        <a href="listings.html" class="text-gray-700 hover:text-primary-dark transition-colors">Lediga bostäder</a>
+        <a href="login.html" class="text-gray-700 hover:text-primary-dark transition-colors">Logga in</a>
+        <a href="login.html#signup" class="bg-primary text-white px-4 py-2 rounded-md hover:bg-primary-dark transition-colors">Registrera</a>
+      </nav>
+      <button class="md:hidden text-gray-700" id="mobile-menu-button">
+        <i class="fas fa-bars text-xl"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="relative h-96 flex items-center justify-center text-white">
+    <div class="hero-bg absolute inset-0"></div>
+    <div class="container mx-auto px-4 z-10 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Hyr ut din bostad tryggt hos oss</h1>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Sök bland verifierade hyresobjekt i hela Sverige.</p>
+      <form action="listings.html" method="get" class="max-w-2xl mx-auto flex" id="search-form">
+        <input 
+          type="text" 
+          name="q" 
+          placeholder="Stad, område eller adress" 
+          aria-label="Sök bostad"
+          class="flex-grow px-4 py-3 rounded-l-md focus:outline-none focus:ring-2 focus:ring-primary"
+        >
+        <button 
+          type="submit" 
+          class="bg-primary text-white px-6 py-3 rounded-r-md hover:bg-primary-dark transition-colors"
+        >
+          Sök
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Featured Listings -->
+  <section class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl font-bold mb-8 text-center">Alla lediga bostäder</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="featured-listings">
+        <!-- Listings will be loaded here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Register Property Section -->
+  <section class="py-16 bg-primary-light">
+    <div class="container mx-auto px-4 max-w-3xl">
+      <div class="bg-white rounded-lg shadow-md p-8">
+        <h2 class="text-3xl font-bold mb-4 text-primary-dark">Registrera din bostad</h2>
+        <p class="mb-6">Vill du hyra ut tryggt? Fyll i dina uppgifter så hör vi av oss.</p>
+        
+        <form id="quick-register-form" class="space-y-4">
+          <div>
+            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">För- och efternamn</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+          </div>
+          
+          <div>
+            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">E‑post</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+          </div>
+          
+          <div>
+            <label for="city" class="block text-sm font-medium text-gray-700 mb-1">Ort</label>
+            <input 
+              type="text" 
+              id="city" 
+              name="city" 
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+          </div>
+          
+          <div>
+            <label for="rent" class="block text-sm font-medium text-gray-700 mb-1">Hyra per månad (SEK)</label>
+            <input 
+              type="number" 
+              id="rent" 
+              name="rent" 
+              min="0"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            >
+          </div>
+          
+          <button 
+            type="submit" 
+            class="w-full bg-primary text-white py-3 rounded-md hover:bg-primary-dark transition-colors"
+          >
+            Skicka intresse
+          </button>
+        </form>
+        
+        <p class="text-sm mt-4 text-center">
+          Vill du fylla i alla detaljer direkt? 
+          <a href="create-listing.html" class="text-primary hover:underline">Gå till fullständig annons</a>.
+        </p>
+        
+        <p id="quick-register-status" class="mt-4 text-center" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white pt-12 pb-6">
+    <div class="container mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <!-- Brand Section -->
+        <div>
+          <div class="flex items-center space-x-2 mb-4">
+            <img src="images/logo-white.svg" alt="Hyra Tryggt logo" class="w-8 h-8">
+            <span class="text-xl font-bold text-white">Hyra Tryggt</span>
+          </div>
+          <p class="text-gray-300">Sveriges tryggaste plattform för andrahandsuthyrning.</p>
+        </div>
+
+        <!-- Services -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Tjänster</h3>
+          <nav class="space-y-2">
+            <a href="listings.html" class="text-gray-300 hover:text-white block transition-colors">Sök bostad</a>
+            <a href="create-listing.html" class="text-gray-300 hover:text-white block transition-colors">Hyr ut</a>
+            <a href="#" class="text-gray-300 hover:text-white block transition-colors">Kontraktshjälp</a>
+            <a href="#" class="text-gray-300 hover:text-white block transition-colors">Försäkring</a>
+          </nav>
+        </div>
+
+        <!-- Support -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Support</h3>
+          <nav class="space-y-2">
+            <a href="#" class="text-gray-300 hover:text-white block transition-colors">Vanliga frågor</a>
+            <a href="#" class="text-gray-300 hover:text-white block transition-colors">Säkerhet</a>
+            <a href="#" class="text-gray-300 hover:text-white block transition-colors">Villkor</a>
+            <a href="#" class="text-gray-300 hover:text-white block transition-colors">Kontakta oss</a>
+          </nav>
+        </div>
+
+        <!-- Contact -->
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Kontakt</h3>
+          <div class="space-y-2">
+            <p><a href="mailto:support@hyratryggt.se" class="text-gray-300 hover:text-white transition-colors">support@hyratryggt.se</a></p>
+            <p><a href="tel:+46123456789" class="text-gray-300 hover:text-white transition-colors">08-123 456 789</a></p>
+          </div>
+          <div class="flex space-x-4 mt-4">
+            <a href="#" class="text-gray-300 hover:text-white transition-colors" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="text-gray-300 hover:text-white transition-colors" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400 text-sm mb-4 md:mb-0">
+          © <span id="ft-year"></span> Hyra Tryggt AB. SSL-krypterat • GDPR-kompatibelt • 24/7 Support
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Integritetspolicy</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Användarvillkor</a>
+          <a href="#" class="text-gray-400 hover:text-white text-sm transition-colors">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Sample listings data with local images
+    const listings = [
+      {
+        id: 1,
+        title: "Ljus tvåa i centrala Stockholm",
+        location: "Stockholm, Vasastan",
+        price: 12500,
+        size: "65 m²",
+        rooms: 2,
+        image: "images/listings/stockholm-2a.jpg",
+        verified: true
+      },
+      {
+        id: 2,
+        title: "Modern etta nära universitetet",
+        location: "Göteborg, Johanneberg",
+        price: 8500,
+        size: "45 m²",
+        rooms: 1,
+        image: "images/listings/goteborg-1a.jpg",
+        verified: true
+      },
+      {
+        id: 3,
+        title: "Rymlig trea med balkong",
+        location: "Malmö, Västra Hamnen",
+        price: 15000,
+        size: "85 m²",
+        rooms: 3,
+        image: "images/listings/malmo-3a.jpg",
+        verified: true
+      }
+    ];
+
+    // Load featured listings
+    function loadFeaturedListings() {
+      const container = document.getElementById('featured-listings');
+      
+      listings.forEach(listing => {
+        const listingElement = document.createElement('div');
+        listingElement.className = 'bg-white rounded-lg overflow-hidden shadow-md card-hover transition-all';
+        listingElement.innerHTML = `
+          <img src="${listing.image}" alt="${listing.title}" class="w-full h-48 object-cover" loading="lazy">
+          <div class="p-6">
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-lg font-semibold">${listing.title}</h3>
+              ${listing.verified ? '<span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">Verifierad</span>' : ''}
+            </div>
+            <p class="text-gray-600 mb-2">${listing.location}</p>
+            <div class="flex justify-between text-sm text-gray-500 mb-4">
+              <span>${listing.rooms} rum</span>
+              <span>${listing.size}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xl font-bold">${listing.price} kr/mån</span>
+              <button class="text-primary hover:text-primary-dark font-medium view-listing" data-id="${listing.id}">Visa mer</button>
+            </div>
+          </div>
+        `;
+        container.appendChild(listingElement);
+      });
+    }
+
+    // Set footer year
+    function setFooterYear() {
+      document.getElementById('ft-year').textContent = new Date().getFullYear();
+    }
+
+    // Form submission handlers
+    function heroSearchSubmit(e) {
+      e.preventDefault();
+      const query = e.target.q.value.trim();
+      if (query) {
+        window.location.href = `listings.html?q=${encodeURIComponent(query)}`;
+      }
+      return false;
+    }
+
+    function quickRegisterBostad(e) {
+      e.preventDefault();
+      const form = e.target;
+      const statusElement = document.getElementById('quick-register-status');
+      
+      // Simulate form submission
+      statusElement.textContent = "Tack för ditt intresse! Vi hör av oss inom 24 timmar.";
+      statusElement.className = "mt-4 text-center text-green-600";
+      
+      // Reset form
+      form.reset();
+      
+      return false;
+    }
+
+    // Handle listing clicks
+    function handleListingClick(e) {
+      if (e.target.classList.contains('view-listing')) {
+        e.preventDefault();
+        const listingId = e.target.dataset.id;
+        window.location.href = `listing.html?id=${listingId}`;
+      }
+    }
+
+    // Handle navigation clicks
+    function handleNavClick(e) {
+      if (e.target.tagName === 'A' && !e.target.href.includes('#')) {
+        e.preventDefault();
+        document.body.classList.add('fade-out');
+        setTimeout(() => {
+          window.location.href = e.target.href;
+        }, 300);
+      }
+    }
+
+    // Initialize mobile menu
+    function initMobileMenu() {
+      const button = document.getElementById('mobile-menu-button');
+      const nav = document.querySelector('header nav');
+      
+      button.addEventListener('click', () => {
+        nav.classList.toggle('hidden');
+        nav.classList.toggle('flex');
+        nav.classList.toggle('flex-col');
+        nav.classList.toggle('absolute');
+        nav.classList.toggle('top-16');
+        nav.classList.toggle('left-0');
+        nav.classList.toggle('right-0');
+        nav.classList.toggle('bg-white');
+        nav.classList.toggle('p-4');
+        nav.classList.toggle('shadow-md');
+      });
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', () => {
+      loadFeaturedListings();
+      setFooterYear();
+      
+      // Add event listeners
+      document.getElementById('search-form').addEventListener('submit', heroSearchSubmit);
+      document.getElementById('quick-register-form').addEventListener('submit', quickRegisterBostad);
+      document.addEventListener('click', handleListingClick);
+      document.querySelector('header').addEventListener('click', handleNavClick);
+      initMobileMenu();
+    });
+  </script>
+</body>
+</html>

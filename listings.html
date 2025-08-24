@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lediga Bostäder | Hyra Tryggt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="font-sans text-gray-800">
+  <header class="bg-white shadow-sm sticky top-0 z-50">
+    <!-- Same header as index.html -->
+  </header>
+  
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">Lediga bostäder</h1>
+    <div id="search-results" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Results will load here -->
+    </div>
+  </main>
+  
+  <script>
+    // Load listings based on URL parameters
+    document.addEventListener('DOMContentLoaded', function() {
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get('q') || '';
+      
+      document.querySelector('input[name="q"]').value = query;
+      
+      // Filter listings (in a real app, this would be an API call)
+      const filtered = listings.filter(l => 
+        l.title.toLowerCase().includes(query.toLowerCase()) || 
+        l.location.toLowerCase().includes(query.toLowerCase())
+      );
+      
+      renderListings(filtered, 'search-results');
+    });
+    
+    function renderListings(listings, containerId) {
+      const container = document.getElementById(containerId);
+      container.innerHTML = listings.map(listing => `
+        <div class="bg-white rounded-lg overflow-hidden shadow-md">
+          <img src="${listing.image}" alt="${listing.title}" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg font-semibold">${listing.title}</h3>
+            <p class="text-gray-600 my-2">${listing.location}</p>
+            <div class="flex justify-between text-sm text-gray-500 mb-4">
+              <span>${listing.rooms} rum</span>
+              <span>${listing.size}</span>
+            </div>
+            <div class="flex justify-between items-center">
+              <span class="text-xl font-bold">${listing.price} kr/mån</span>
+              <a href="listing.html?id=${listing.id}" class="text-primary hover:text-primary-dark font-medium">Visa mer</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+  </script>
+</body>
+</html>
